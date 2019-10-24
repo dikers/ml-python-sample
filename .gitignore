@@ -28,6 +28,8 @@ __pycache__/
 *.iml
 *.ipr
 */target/*
+*/target
+/target/*
 
 build.sh
 
