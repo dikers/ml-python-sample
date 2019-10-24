@@ -1,4 +1,9 @@
-__pycache__
+__pycache__/
+*/__pycache__
+/dataset/*
+*/dataset/*
+/models/
+*/models
 /target/
 /.idea/*
 /logs/*
@@ -22,7 +27,7 @@ __pycache__
 *.iws
 *.iml
 *.ipr
-*/target/
+*/target/*
 
 build.sh
 
