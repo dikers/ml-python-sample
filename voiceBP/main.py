@@ -17,4 +17,4 @@ if __name__ == '__main__':
     x = dh.normalization(x)
     train_list, test_list = dh.data_split(x, y, 0.7)
     bp.train(train_list, test_list, 500, 0.05, 0.1)
-    bp.save('%f.h7' % (bp.test_acc))
+    bp.save('target/%f.h7' % (bp.test_acc))

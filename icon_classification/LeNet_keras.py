@@ -106,36 +106,37 @@ if __name__ == '__main__':
     x_test /= 255.0
 
     print(x_train.shape)
+    print(x_train[0])
     print(y_test[0:49])
 
     # build network
     model = build_model()
     print(model.summary())
-
-    # set callback
-    tb_cb = TensorBoard(log_dir='./target', histogram_freq=0)
-    change_lr = LearningRateScheduler(scheduler)
-    cbks = [change_lr,tb_cb]
-
-    # start train
-    model.fit(x_train, y_train,
-              batch_size=50,
-              epochs=10,
-              callbacks=cbks,
-              validation_data=(x_test, y_test),
-              shuffle=True)
-
-    # save model
-    model.save('target/lenet.h5')
-
-    result = model.predict(x_test)
-    print(type(result))
-
-    total_count = len(result)
-
-    right_count = 0
-    for pre, real in zip(result, y_test):
-        # print(pre, real)
-        if np.argmax(pre) == np.argmax(real):
-            right_count += 1
-    print('socre {} '.format(right_count * 100 / total_count))
+    #
+    # # set callback
+    # tb_cb = TensorBoard(log_dir='./target', histogram_freq=0)
+    # change_lr = LearningRateScheduler(scheduler)
+    # cbks = [change_lr,tb_cb]
+    #
+    # # start train
+    # model.fit(x_train, y_train,
+    #           batch_size=50,
+    #           epochs=10,
+    #           callbacks=cbks,
+    #           validation_data=(x_test, y_test),
+    #           shuffle=True)
+    #
+    # # save model
+    # model.save('target/lenet.h5')
+    #
+    # result = model.predict(x_test)
+    # print(type(result))
+    #
+    # total_count = len(result)
+    #
+    # right_count = 0
+    # for pre, real in zip(result, y_test):
+    #     # print(pre, real)
+    #     if np.argmax(pre) == np.argmax(real):
+    #         right_count += 1
+    # print('socre {} '.format(right_count * 100 / total_count))

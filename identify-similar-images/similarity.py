@@ -103,7 +103,7 @@ def print_report(total_count, pos_all_list, parent_queue):
     """
 
     print('\n\n--------------[报告开始]--------------------\n')
-    print('共比较图片{}张'.format(total_count))
+    print('共比较图片{}次'.format(total_count))
 
     print('共发现{}个相同的片段广告'.format(len(pos_all_list)))
     print('')
