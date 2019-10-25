@@ -31,7 +31,7 @@ def splite_vedio(file_dir):
         img = Image.open(input_file_name)
         print(input_file_name)
         print('out file: ', out_file_name)
-        cropped = img.crop((60, 40, 180, 160))  # (left, upper, right, lower)
+        cropped = img.crop((60, 40, 200, 180))  # (left, upper, right, lower)
         cropped.save(out_file_name)
         print('{} done------'.format(file_dir))
 
@@ -42,11 +42,13 @@ def splite_image():
     :return:
     """
     img = Image.open("/Users/mac/tmp/test_split_image/demo/002.jpg")
-    cropped = img.crop((60, 40, 260, 240))  # (left, upper, right, lower)
+    cropped = img.crop((60, 40, 200, 180))  # (left, upper, right, lower)
     cropped.save("/Users/mac/tmp/test_split_image/demo/cut/002.JPG")
 
 
-splite_vedio('/Users/mac/tmp/test_split_image/demo/')
-splite_vedio('/Users/mac/tmp/test_split_image/demo2/')
-splite_vedio('/Users/mac/tmp/test_split_image/demo3/')
+# splite_vedio('/Users/mac/tmp/test_split_image/demo7/')
+# splite_vedio('/Users/mac/tmp/test_split_image/demo4/')
+splite_vedio('/Users/mac/tmp/test_split_image/demo5/')
+# splite_vedio('/Users/mac/tmp/test_split_image/demo6/')
+splite_vedio('/Users/mac/tmp/test_split_image/demo7/')
 

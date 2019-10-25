@@ -8,7 +8,7 @@ import cv2
 import os
 from sklearn import model_selection
 
-IMAGE_DIMS = (120, 120, 3)
+IMAGE_DIMS = (140, 140, 3)
 from keras.models import load_model
 from keras.preprocessing.image import img_to_array
 from keras.applications.vgg16 import preprocess_input, decode_predictions
@@ -34,9 +34,10 @@ def get_file_list(file_dir):
 def load_data():
     dir_list = []
 
-    dir_list.append('/Users/mac/tmp/test_split_image/demo/cut/')
-    dir_list.append('/Users/mac/tmp/test_split_image/demo2/cut/')
-    dir_list.append('/Users/mac/tmp/test_split_image/demo3/cut/')
+    dir_list.append('/Users/mac/tmp/test_split_image/demo4/cut/')
+    dir_list.append('/Users/mac/tmp/test_split_image/demo5/cut/')
+    dir_list.append('/Users/mac/tmp/test_split_image/demo6/cut/')
+    dir_list.append('/Users/mac/tmp/test_split_image/demo7/cut/')
     images = []
     labels = []
 
@@ -61,7 +62,7 @@ def load_data():
     images = np.array(images, dtype='float')
     labels = np.array(labels, dtype='int')
     x_train, x_test, y_train, y_test = \
-        model_selection.train_test_split(images, labels, test_size=0.7)
+        model_selection.train_test_split(images, labels, test_size=0.9)
 
     print("================================== ")
     print(x_train.shape)

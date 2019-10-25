@@ -7,7 +7,7 @@ import os
 from keras.preprocessing.image import img_to_array
 from sklearn import model_selection
 import numpy as np
-IMAGE_DIMS = (120, 120, 3)
+IMAGE_DIMS = (140, 140, 3)
 
 def get_file_list(file_dir):
     """
@@ -23,12 +23,8 @@ def get_file_list(file_dir):
     return L
 
 
-def load_data():
-    dir_list = []
+def load_data(dir_list):
 
-    dir_list.append('/Users/mac/tmp/test_split_image/demo/cut/')
-    dir_list.append('/Users/mac/tmp/test_split_image/demo2/cut/')
-    dir_list.append('/Users/mac/tmp/test_split_image/demo3/cut/')
     images = []
     labels = []
 
@@ -77,22 +73,31 @@ def build_model():
     model.add(Flatten())
     model.add(Dense(120, activation = 'relu', kernel_initializer='he_normal'))
     model.add(Dense(84, activation = 'relu', kernel_initializer='he_normal'))
-    model.add(Dense(IMAGE_DIMS[2], activation = 'softmax', kernel_initializer='he_normal'))
+    model.add(Dense(4, activation = 'softmax', kernel_initializer='he_normal'))
     sgd = optimizers.SGD(lr=.1, momentum=0.9, nesterov=True)
     model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
     return model
 
 def scheduler(epoch):
     if epoch < 10:
-        return 0.01
+        return 0.005
     if epoch < 20:
         return 0.005
     return 0.001
 
 if __name__ == '__main__':
 
+
+    dir_list = []
+
+    dir_list.append('/Users/mac/tmp/test_split_image/demo4/cut/')
+    dir_list.append('/Users/mac/tmp/test_split_image/demo5/cut/')
+    dir_list.append('/Users/mac/tmp/test_split_image/demo6/cut/')
+    dir_list.append('/Users/mac/tmp/test_split_image/demo7/cut/')
+
+
     # load data
-    x_train, x_test, y_train, y_test = load_data()
+    x_train, x_test, y_train, y_test = load_data(dir_list)
     print(y_train[0])
     x_train = x_train.astype('float32')
     x_test = x_test.astype('float32')
@@ -101,7 +106,7 @@ if __name__ == '__main__':
     x_test /= 255.0
 
     print(x_train.shape)
-    print(y_test[0])
+    print(y_test[0:49])
 
     # build network
     model = build_model()
