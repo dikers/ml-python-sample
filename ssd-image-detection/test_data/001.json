@@ -1,0 +1,1 @@
+{"file": "000000000139.jpg", "image_size": [{"width": 640, "height": 426, "depth": 3}], "annotations": [{"class_id": 58, "top": 142, "left": 236, "width": 24, "height": 69}, {"class_id": 58, "top": 142, "left": 236, "width": 24, "height": 69}], "categories": [{"class_id": 58, "name": "potted plant"}, {"class_id": 69, "name": "dining table"}]}

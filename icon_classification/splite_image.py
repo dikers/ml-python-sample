@@ -3,7 +3,7 @@ import os
 
 
 """
-ffmpeg -ss 00:00 -i sc.ts -f image2  -s 1024x768 -r 0.2 -t 10:20 %3d.jpg
+ffmpeg -ss 00:00 -i test.mp4 -f image2  -s 1277x718 -r 30 -t 00:05 %3d.jpg
 
 """
 
@@ -46,9 +46,8 @@ def splite_image():
     cropped.save("/Users/mac/tmp/test_split_image/demo/cut/002.JPG")
 
 
-# splite_vedio('/Users/mac/tmp/test_split_image/demo7/')
-# splite_vedio('/Users/mac/tmp/test_split_image/demo4/')
-splite_vedio('/Users/mac/tmp/test_split_image/demo5/')
-# splite_vedio('/Users/mac/tmp/test_split_image/demo6/')
 splite_vedio('/Users/mac/tmp/test_split_image/demo7/')
+splite_vedio('/Users/mac/tmp/test_split_image/demo4/')
+splite_vedio('/Users/mac/tmp/test_split_image/demo5/')
+splite_vedio('/Users/mac/tmp/test_split_image/demo6/')
 

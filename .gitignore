@@ -22,6 +22,10 @@ __pycache__/
 .springBeans
 .sts4-cache
 
+.ipynb_checkpoints/
+.ipynb_checkpoints/*
+.ipynb_checkpoints
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
@@ -30,6 +34,9 @@ __pycache__/
 */target/*
 */target
 /target/*
+*/dataset/*
+*/dataset
+/dataset/*
 
 build.sh
 

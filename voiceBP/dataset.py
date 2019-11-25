@@ -127,31 +127,108 @@ def data_split(x, y, rate):
     return train_data, test_data
 
 
+def _generate_train_data(input_file_dir):
+    """
+
+    :param input_file_dir:
+    :return:
+    """
+    x_data = []
+    y_data = []
+    label_count = 0
+    for f in os.listdir(input_file_dir):
+        print('foler: ', f)
+        src_path = '{}/{}'.format(input_file_dir, f)
+        file_list = os.listdir(src_path)
+
+
+
+        for item in file_list:  # 进入到文件夹内，对每个文件进行循环遍历
+
+            file_type = item.rsplit('.')[1]
+            if file_type != 'mp3':
+                continue
+
+
+            file_path = '{}/{}'.format(src_path, item)
+            print(file_path)
+            y, sr = librosa.load(file_path)
+            a = librosa.feature.mfcc(y=y, sr=sr)
+            x_data.append(get_max(a))
+            y_data.append(label_count)
+
+        label_count += 1
+
+    print('Train data size:', len(x_data))
+    print(len(y_data))
+    return x_data, y_data, label_count
+
+
+
+def generate_train_file(input_file_dir, generate_file_path):
+    """
+    生成训练文件
+    :param input_file_dir:
+    :param generate_file_path:
+    :return:
+    """
+
+    x, y, label_count= _generate_train_data(input_file_dir)
+
+    x, y = shuffer(x, y)
+    print('label_count: ', label_count)
+
+    f=open('{}/{}'.format(generate_file_path, 'x.txt'), 'w', encoding='UTF-8')
+    for line in x:
+        for a in line :
+            f.write(str(a)+',')
+        f.write('\n')
+    f.close()
+
+    f = open('{}/{}'.format(generate_file_path, 'y.txt'), 'w', encoding='UTF-8')
+
+    for line in y:
+        a = int(line)
+        for i in range(label_count):
+            if i == a:
+                f.write('1')
+            else:
+                f.write('0')
+            if i < label_count-1:
+                f.write(',')
+
+        f.write('\n')
+    f.close()
+    print("OK")
+
+
+
+generate_train_file('/Users/mac/Desktop/nwcd/客户资料/001蓝拓扑/test_data', './dataset/')
 
 
 # x,y=shuffer([1,2,3,4,5],[1,2,3,4,5])
 # print(x,y)
-x,y=get_data()
-
-print(y)
-for item in x:
-    print(len(item), item)
-
-f=open('dataset/t_x.txt','w',encoding='UTF-8')
-for line in x:
-    for a in line :
-        f.write(str(a)+',')
-    f.write('\n')
-f.close()
-# f1=open('y.txt','r',encoding='UTF-8')
-f=open('dataset/t_y.txt','w',encoding='UTF-8')
-for line in y:
-    a =int(line)
-    for i in range(2):
-        if i==a:
-            f.write('1,')
-        else:
-            f.write('0,')
-    f.write('\n')
-f.close()
-print("OK")
+# x,y=get_data()
+#
+# print(y)
+# for item in x:
+#     print(len(item), item)
+#
+# f=open('dataset/t_x.txt','w',encoding='UTF-8')
+# for line in x:
+#     for a in line :
+#         f.write(str(a)+',')
+#     f.write('\n')
+# f.close()
+# # f1=open('y.txt','r',encoding='UTF-8')
+# f=open('dataset/t_y.txt','w',encoding='UTF-8')
+# for line in y:
+#     a =int(line)
+#     for i in range(2):
+#         if i==a:
+#             f.write('1,')
+#         else:
+#             f.write('0,')
+#     f.write('\n')
+# f.close()
+# print("OK")
