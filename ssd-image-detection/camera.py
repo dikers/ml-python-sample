@@ -112,7 +112,7 @@ while(cap.isOpened()):  #isOpened()  检测摄像头是否处于打开状态
     else:
         continue
     if ret == True:       #如果摄像头读取图像成功
-        image_path = './test.jpg'
+        image_path = './dataset/test.jpg'
         cv2.imwrite(image_path, img)
         draw_image(cv2, img, image_path, model, bbox_util)
         k = cv2.waitKey(100)
