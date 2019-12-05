@@ -203,7 +203,7 @@ def generate_train_file(input_file_dir, generate_file_path):
 
 
 
-generate_train_file('/Users/mac/Desktop/nwcd/客户资料/001蓝拓扑/test_data', './dataset/')
+generate_train_file('./test_data', './dataset/')
 
 
 # x,y=shuffer([1,2,3,4,5],[1,2,3,4,5])

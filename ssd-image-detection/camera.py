@@ -96,13 +96,14 @@ def draw_image(cv2, image , image_path , model, bbox_util):
 
 
 
-
-
 model, bbox_util = init_model()
+print('------------')
 cap = cv2.VideoCapture(0)
+print('------------2')
 cv2.namedWindow("SSD - Demo")
 
 show_count = 0
+print('ssssss')
 while(cap.isOpened()):  #isOpened()  检测摄像头是否处于打开状态
     ret,img = cap.read()  #把摄像头获取的图像信息保存之img变量
     print('============ ', show_count)
